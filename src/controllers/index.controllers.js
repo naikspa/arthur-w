@@ -19,7 +19,7 @@ controller.createUser = async (req, res, next) => {
     await newClient.save();
     res.redirect("/compra");
   } catch (error) {
-    return res.render("error", { errorMessage: error.message });
+    return console.log(error.message);
   }
 };
 
@@ -87,9 +87,25 @@ controller.editProduct = async (req, res) => {
   res.redirect("/admin/panel");
 };
 
+controller.orderDone = async (req, res) => {
+const { id } = req.params;
+await Clients.findByIdAndUpdate(id, { done: true });
+res.redirect("/admin/panel");
+};
+controller.undoOrder = async (req, res) => {
+const { id } = req.params;
+await Clients.findByIdAndUpdate(id, { done: false });
+res.redirect("/admin/panel");
+};
+
 controller.deleteProduct = async (req, res) => {
   const { id } = req.params;
   await Product.findByIdAndDelete(id);
+  res.redirect("/admin/panel");
+};
+controller.deleteOrder = async (req, res) => {
+  const { id } = req.params;
+  await Clients.findByIdAndDelete(id);
   res.redirect("/admin/panel");
 };
 
