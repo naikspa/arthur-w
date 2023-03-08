@@ -11,7 +11,51 @@ if(screen.width>750){
 }
 productSection.addEventListener('click', e=>{
     changeExpand(e)
+    setSize(e)
 })
+document.addEventListener("input", (e) => {
+if (e.target.classList.contains("select-inp-size")) {
+    e.target.parentElement.querySelector(".sizeInp").style.display =
+      "inline-block";
+      document.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+          let productosLS = obtenerProductosLocalStorage();
+          let productId = e.target.parentElement.parentElement.parentElement
+            .querySelector(".name")
+            .getAttribute("p-id");
+          let sizeInput = e.target.parentElement.querySelector(".select-inp-size");
+          let sizeInputValue = sizeInput.value;
+  
+          productosLS.forEach((producto) => {
+            if (producto.id == productId) {
+              producto.size = sizeInputValue;
+              localStorage.setItem("productos", JSON.stringify(productosLS));
+            }
+          });
+          e.target.parentElement.querySelector(".sizeInp").style.display =
+            "none";
+        }
+      });
+}})
+const setSize = (e) =>{
+  e.preventDefault();
+  if (e.target.classList.contains("sizeInp")) {
+    let productosLS = obtenerProductosLocalStorage();
+    let productId = e.target.parentElement.parentElement.parentElement
+      .querySelector(".name")
+      .getAttribute("p-id");
+    let sizeInput = e.target.parentElement.querySelector(".select-inp-size");
+    let sizeInputValue = sizeInput.value;
+
+    productosLS.forEach((producto) => {
+      if (producto.id == productId) {
+        producto.size = sizeInputValue;
+        localStorage.setItem("productos", JSON.stringify(productosLS));
+      }
+    });
+    e.target.style.display = "none";
+  }
+}
 const changeExpand = e =>{
     expand = e.target;
     let expanded = expand.parentElement.parentElement.querySelector('.second-info');
@@ -63,11 +107,15 @@ const loadProducts = ()=> {
           <span class="material-symbols-outlined expand_more" title="Ver detalles" >expand_more</span>
             <img src="${producto.img}">
             <p class="price">$${discPrice}</p>
-            <p class="name">${producto.name}</p>
+            <p class="name" p-id="${producto.id}">${producto.name}</p>
           </div>
           <div class="second-info">
             <span class="amount-span">Cantidad: ${producto.amount}</span>
-            <span class="size-span">Tamaño: ${producto.size}</span>
+            <span class="size-span">
+                Tamaño:  
+                <input class="select-inp-size" value="${producto.size}"placeholder="Alto x Ancho">
+                <span class="material-symbols-outlined sizeInp"style="display:none"> check_circle </span>
+            </span>
             <span class="size-span">Descuento: <b class="discount-p-text">${producto.disc}</b></span>
           </div>
         </div>`

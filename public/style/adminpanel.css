@@ -82,7 +82,8 @@ body {
 
 #edit {
   background-color: rgb(42, 118, 132);
-  padding: 5px;
+  padding: 7px 10px;
+  width: fit-content;
 }
 
 #edit:hover {
@@ -91,6 +92,8 @@ body {
 
 #delete {
   background-color: rgb(214, 48, 48);
+  padding: 7px 10px;
+  width: fit-content;
 }
 
 #delete:hover {
@@ -272,4 +275,19 @@ form {
 .products-max-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+/* SEPARADOR ------------------------------------------------------------------------------------------------------------------- */
+
+.upload-link {
+  color: #1d1d1d;
+}
+
+.upload-link:hover {
+  color: #535353;
+  transition: 0.3s;
+}
+
+#h4-margintop {
+  margin-top: 15px;
 }

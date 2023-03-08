@@ -67,8 +67,8 @@ head
                 h3=`Tamaño: ${cli.size}`
                 h3=`Cantidad: ${cli.amount}`
                 h3=`Color: ${cli.color}`
-            a#edit.action-btn(href=`/admin/panel/${client._id}/done`) Pedido Entregado
-        else
+            .actions 
+              a#edit.action-btn(href=`/admin/panel/${client._id}/done`) Pedido Entregado
             
       
   .h1-orders
@@ -104,7 +104,7 @@ head
                 h3=`Tamaño: ${cli.size}`
                 h3=`Cantidad: ${cli.amount}`
                 h3=`Color: ${cli.color}`
+            .actions 
               a#edit.action-btn(href=`/admin/panel/${client._id}/undoOrder`) Cancelar Entrega
-              a#edit.action-btn(href=`/admin/panel/${client._id}/deleteOrder`) Borrar
-        else 
+              a#delete.action-btn(href=`/admin/panel/${client._id}/deleteOrder`) Borrar
       

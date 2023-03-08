@@ -38,8 +38,8 @@ controller.addProduct = async (req, res) => {
 };
 controller.loginPanel = (req, res) => {
   const cookies = req.cookies;
-  if (cookies.isLogged == "y")res.redirect("/admin/panel");
-  else{
+  if (cookies.isLogged == "y") res.redirect("/admin/panel");
+  else {
     res.render("adminlogin");
   }
 };
@@ -88,14 +88,14 @@ controller.editProduct = async (req, res) => {
 };
 
 controller.orderDone = async (req, res) => {
-const { id } = req.params;
-await Clients.findByIdAndUpdate(id, { done: true });
-res.redirect("/admin/panel");
+  const { id } = req.params;
+  await Clients.findByIdAndUpdate(id, { done: true });
+  res.redirect("/admin/panel");
 };
 controller.undoOrder = async (req, res) => {
-const { id } = req.params;
-await Clients.findByIdAndUpdate(id, { done: false });
-res.redirect("/admin/panel");
+  const { id } = req.params;
+  await Clients.findByIdAndUpdate(id, { done: false });
+  res.redirect("/admin/panel");
 };
 
 controller.deleteProduct = async (req, res) => {
@@ -107,6 +107,10 @@ controller.deleteOrder = async (req, res) => {
   const { id } = req.params;
   await Clients.findByIdAndDelete(id);
   res.redirect("/admin/panel");
+};
+
+controller.renderUpdate = (req, res) => {
+  res.render("upload");
 };
 
 // mongodb+srv:Enzo:UDRDRiI6l0NMmj0G@arthur-workshop.bwnuexp.mongodb.net/dbapi?retryWrites=true&w=majority

@@ -88,7 +88,19 @@ h3{
 
 }
 .size-span{
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sizeInp {
+  padding: 6px;
+  display: none;
+  font-size: 20px !important;
+  color: #1a4;
+}
+.sizeInp:hover{
+  cursor: pointer;
+  color: rgb(18, 102, 46);
 }
 /* CONTACT ------ */
 .div-section{

@@ -8,6 +8,7 @@ const clientSchema = new Schema(
     products: String,
     telNumber: Number,
     adress: String,
+    done: { type: Boolean, default: false }
   },
   { timestamps: true, versionKey: false }
 );

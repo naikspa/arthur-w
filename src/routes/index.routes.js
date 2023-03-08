@@ -3,6 +3,20 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const app = express();
 const controller = require("../controllers/index.controllers");
+const path = require("path");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/products-imgs");
+  },
+  filename: function (req, file, cb) {
+    console.log(file);
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -26,5 +40,10 @@ router.get("/admin/panel/:id/delete", controller.deleteProduct);
 router.get("/admin/panel/:id/done", controller.orderDone);
 router.get("/admin/panel/:id/undoOrder", controller.undoOrder);
 router.get("/admin/panel/:id/deleteOrder", controller.deleteOrder);
+
+router.get("/admin/upload", controller.renderUpdate);
+router.post("/admin/upload", upload.single("image"), (req, res) => {
+  res.redirect("/admin/panel/new");
+});
 
 module.exports = router;
