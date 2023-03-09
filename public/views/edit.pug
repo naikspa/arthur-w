@@ -21,8 +21,12 @@ head
                 .separator
                     h1.titulo-h1 Editar Producto
                 .separator 
-                    h2 Imagen (volver a seleccionar)
-                    input(type="file" name="pImage" )
+                    h2 Imagenes:
+                    .image-container 
+                        each x in y 
+                            img#img-chk(src=`/products-imgs/${x.path}`)
+                    h4#h4-margintop O 
+                        a.upload-link(href="/admin/upload") añadir una nueva imagen
                 .separator 
                     h2 Precio (Incluir "$")
                     input(type="text" name="pPrice" value= x.pPrice)

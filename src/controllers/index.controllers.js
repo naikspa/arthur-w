@@ -9,7 +9,8 @@ controller.compra = (req, res) => {
 };
 
 const Product = require("../model/Product");
-const Clients = require("../model/client");
+const Clients = require("../model/Client");
+const Image = require("../model/Image");
 const cookie = require("cookie");
 
 controller.createUser = async (req, res, next) => {
@@ -23,8 +24,9 @@ controller.createUser = async (req, res, next) => {
   }
 };
 
-controller.newProduct = (req, res) => {
-  res.render("newproduct");
+controller.newProduct = async (req, res) => {
+  const upload = await Image.find().lean();
+  res.render("newproduct", { y: upload });
 };
 
 controller.addProduct = async (req, res) => {
@@ -74,8 +76,9 @@ controller.adminPanel = async (req, res) => {
 
 controller.renderEdit = async (req, res) => {
   try {
+    const upload = await Image.find().lean();
     const prod = await Product.findById(req.params.id);
-    res.render("edit", { x: prod });
+    res.render("edit", { x: prod, y: upload });
   } catch (error) {
     console.log(error.message);
   }
@@ -109,7 +112,20 @@ controller.deleteOrder = async (req, res) => {
   res.redirect("/admin/panel");
 };
 
-controller.renderUpdate = (req, res) => {
+controller.upload = async (req, res) => {
+  const image = new Image({
+    path: req.file.filename,
+  });
+
+  try {
+    await image.save();
+    res.redirect("/admin/panel/new");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+controller.renderUpload = async (req, res) => {
   res.render("upload");
 };
 

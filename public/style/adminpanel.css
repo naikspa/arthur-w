@@ -7,6 +7,10 @@
   list-style: none;
 }
 
+html {
+  height: auto;
+}
+
 body {
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -19,6 +23,7 @@ body {
     #434343,
     #000000
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow-x: hidden;
 }
 
 .products-container {
@@ -149,11 +154,10 @@ body {
 /* SEPARADOR ---------------------------------------------------------------------------------------------- */
 
 .form-container {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 50px 0;
 }
 
 .form {
@@ -290,4 +294,16 @@ form {
 
 #h4-margintop {
   margin-top: 15px;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: 120px 120px 120px;
+}
+
+#img-chk {
+  display: inline-grid;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
 }

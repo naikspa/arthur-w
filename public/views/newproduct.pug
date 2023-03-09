@@ -17,9 +17,11 @@ head
             .imagen.section
                 .separator 
                     h2 Imagenes:
+                    .image-container 
+                        each x in y 
+                            img#img-chk(src=`/products-imgs/${x.path}`)
                     h4#h4-margintop O 
                         a.upload-link(href="/admin/upload") añadir una nueva imagen
-                    | (Solo si no fue añadida antes)
                 .separator 
                     h2 Precio (Incluir "$")
                     input.new-input(type="text" name="pPrice")

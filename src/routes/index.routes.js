@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
+    cb(null, file.originalname);
   },
 });
 
@@ -41,9 +41,7 @@ router.get("/admin/panel/:id/done", controller.orderDone);
 router.get("/admin/panel/:id/undoOrder", controller.undoOrder);
 router.get("/admin/panel/:id/deleteOrder", controller.deleteOrder);
 
-router.get("/admin/upload", controller.renderUpdate);
-router.post("/admin/upload", upload.single("image"), (req, res) => {
-  res.redirect("/admin/panel/new");
-});
+router.get("/admin/upload", controller.renderUpload);
+router.post("/admin/upload", upload.single("image"), controller.upload);
 
 module.exports = router;
