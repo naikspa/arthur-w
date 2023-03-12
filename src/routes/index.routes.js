@@ -40,7 +40,7 @@ router.get("/admin/panel/:id/delete", controller.deleteProduct);
 router.get("/admin/panel/:id/done", controller.orderDone);
 router.get("/admin/panel/:id/undoOrder", controller.undoOrder);
 router.get("/admin/panel/:id/deleteOrder", controller.deleteOrder);
-
+router.post("/admin/panel/imgupload", controller.selectImg)
 router.get("/admin/upload", controller.renderUpload);
 router.post("/admin/upload", upload.single("image"), controller.upload);
 

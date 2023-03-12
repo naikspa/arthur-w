@@ -18,7 +18,7 @@ head
   each prod in x
     .products
         .img-container 
-          img.product-image(src= `../products-imgs/${prod.pImage}`)
+          img.product-image(src= `..${prod.pImage}`)
         .price-container 
           h2.product-price= prod.pPrice
         .disc-container 
@@ -72,7 +72,7 @@ head
             
       
   .h1-orders
-      h1.orders-h1 Pedidos Hechos
+      h1.orders-h1 Pedidos Entregados
   .products-max-container
       each client in y
         if client.done == true

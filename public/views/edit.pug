@@ -21,10 +21,14 @@ head
                 .separator
                     h1.titulo-h1 Editar Producto
                 .separator 
-                    h2 Imagenes:
+                    h2 Seleccionar imagen
+                    span(class="material-symbols-outlined expand-imgs") expand_more
+                    input.send-img-path(type="text" name="pImage" hidden value=x.pImage)
                     .image-container 
                         each x in y 
-                            img#img-chk(src=`/products-imgs/${x.path}`)
+                            .select-img-container
+                                img#img-chk(src=`/products-imgs/${x.path}`)
+                                input.checkbox-img(type="checkbox")
                     h4#h4-margintop O 
                         a.upload-link(href="/admin/upload") añadir una nueva imagen
                 .separator 
@@ -46,3 +50,5 @@ head
                     h2 ID
                     input(type="number" name="pID" value= x.pID)
                 button#submit(type="submit") Enviar
+//Scripts
+script(src='/script/edit.js')

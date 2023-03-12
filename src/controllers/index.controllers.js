@@ -124,7 +124,9 @@ controller.upload = async (req, res) => {
     console.log(error);
   }
 };
-
+controller.selectImg = async (req,res) =>{
+  console.log(req.body)
+}
 controller.renderUpload = async (req, res) => {
   res.render("upload");
 };

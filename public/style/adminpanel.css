@@ -296,8 +296,22 @@ form {
   margin-top: 15px;
 }
 
+.select-img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-img {
+  text-decoration: none;
+  padding: 3px;
+  color: #1b1;
+  border: 1.5px solid #1b1;
+}
+
 .image-container {
-  display: grid;
+  display: none;
   grid-template-columns: 120px 120px 120px;
 }
 
@@ -306,4 +320,12 @@ form {
   width: 100px;
   height: 100px;
   margin: 10px;
+}
+
+.expand-imgs {
+  user-select: none;
+}
+
+.expand-imgs:hover {
+  cursor: pointer;
 }
