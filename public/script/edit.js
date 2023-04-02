@@ -1,53 +1,43 @@
+
 // let img = checkbox.parentElement.querySelector("img")
 // let imgSrc = img.getAttribute('src')
 // const data = { imgSrc };
 
-const checkboxes = document.querySelectorAll(".checkbox-img");
 
-checkboxes.forEach(function (checkbox) {
-  checkbox.addEventListener("change", function () {
-    // desmarca los otros checkboxes
-    checkboxes.forEach(function (otherCheckbox) {
-      if (otherCheckbox !== checkbox) {
-        otherCheckbox.checked = false;
-      }
-    });
-  });
-});
+document.addEventListener('click', (e) => {
+    if(e.target.classList.contains('expand-imgs')){changeExpand(e)}
+    if(e.target.classList.contains('checkbox-img')){
+        sendImg(e)
+        e.target.parentElement.parentElement.parentElement.querySelector('.expand-imgs').textContent = "expand_more";
+        e.target.parentElement.parentElement.parentElement.querySelector('.image-container').style.display = "none";
 
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("expand-imgs")) {
-    changeExpand(e);
-  }
-  if (e.target.classList.contains("checkbox-img")) {
-    sendImg(e);
-    e.target.parentElement.parentElement.parentElement.querySelector(
-      ".expand-imgs"
-    ).textContent = "expand_more";
-    e.target.parentElement.parentElement.parentElement.querySelector(
-      ".image-container"
-    ).style.display = "none";
-  }
-});
+    }
+    
+})
+         
+const changeExpand = e =>{
+    expand = e.target;
+    let expanded = expand.parentElement.querySelector('.image-container');
+    if(expand.textContent == "expand_more"){
+        expand.textContent = "expand_less"
+        expanded.style.display = "grid";
 
-const changeExpand = (e) => {
-  expand = e.target;
-  let expanded = expand.parentElement.querySelector(".image-container");
-  if (expand.textContent == "expand_more") {
-    expand.textContent = "expand_less";
-    expanded.style.display = "grid";
-  } else if (expand.textContent == "expand_less") {
-    expand.textContent = "expand_more";
-    expanded.style.display = "none";
-  }
-};
 
-const sendImg = (e) => {
-  let img = e.target.parentElement.querySelector("img");
-  let imgSrc = img.getAttribute("src");
-  const data = imgSrc;
-  document.querySelector(".send-img-path").value = data;
-};
+    }else if(expand.textContent == "expand_less"){
+        expand.textContent = "expand_more"
+        expanded.style.display = "none";
+    }
+}
+
+
+const sendImg = e =>{
+        let img = e.target.parentElement.querySelector("img")
+        let imgSrc = img.getAttribute('src')
+        const data = imgSrc ;
+        document.querySelector(".send-img-path").value = data
+
+}
+
 
 //--
 //al pedo hice este codigo porque lo podia hacer mas facil pero me lo guardo que quizas dsp me sirve
@@ -60,7 +50,7 @@ const sendImg = (e) => {
 //     fetch(url, {
 //         method: 'POST',
 //         body: JSON.stringify(data),
-//         headers:{
+//         headers:{ 
 //                 'Content-Type': 'application/json'
 //             }
 //         })
@@ -71,5 +61,7 @@ const sendImg = (e) => {
 //         .catch(error => {
 //                console.error('Error:', error);
 //         });
-
+                
 // }
+
+           

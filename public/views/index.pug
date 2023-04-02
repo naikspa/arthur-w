@@ -23,9 +23,9 @@ nav
     li.nav-res-items_li
       a(href='/') INICIO
     li.nav-res-items_li
-      a(href='#productos') PRODUCTOS
-    li.nav-res-items_li
       a(href='#nosotros') NOSOTROS
+    li.nav-res-items_li
+      a(href='#productos') PRODUCTOS
     li.nav-res-items_li
       a(href='#clientes') NUESTROS CLIENTES 
 #carrito.responsive-shop_open
@@ -92,11 +92,11 @@ section#nosotros
       .question
         h3 PRODUCTOS WORKSHOP 
         p
-          li| - Lonas Camufladas 75 y 50 % sombreado 
-          li|- Cerramiento, Divisores de Ambientes y Cortinas en Camuflaje 
-          li|- Parasoles Autos y Camionetas 
-          li|- Fogoneros Nórdicos 
-          li|- Muebles Industriales Personalizados
+          li| Lonas Camufladas 75 y 50 % sombreado 
+          li| Cerramientos, Divisores de Ambientes y Cortinas en Camuflaje 
+          li| Parasoles Autos y Camionetas 
+          li| Fogoneros Nórdicos 
+          li| Muebles Industriales Personalizados
 
 // productos 
 section#productos
@@ -109,20 +109,56 @@ section#productos
         // cambia el descuento aca abajo (importante agregar "%" al final)
         span.discount-p= `${prod.pDisc}`
         // aca abajo donde dice src='' tenes que meter el link de la imagen entre las comillas(podes cambiarlo donde dice src='y aca adentro lo pones'), la imagen debe estar en la carpeta products-imgs y a la hora de escribir el link debe tener el mismo nombre(p-negro en este caso) y formato (.jpg, .jpeg, .png) el del archivo y aca abajo
-        img(src=`../products-imgs/${prod.pImage}`)
+        img(src=`..${prod.pImage}`)
       .info-p-container
         // cambia el precio aca abajo
         p.price-p= prod.pPrice 
         // cambia el nombre del producto aca abajo
         p.price-p_text= prod.pName
+        //aca va el color
+        b.color=prod.pColor
         //si queres agregar otro producto, procurá ponerle un id distinto porque si no va a tirar error(podes cambiarlo donde dice p-id='y aca adentro lo pones')
         button.buy(p-id= `${prod.pID}`) A&ntilde;adir al carrito
         // cambia el color aca abajo, esto de todas formas te va a servir a vos el cliente esto no lo ve
-      b.color(hidden='') Negro
 
+// productos 
+section#clientes
+  .about-us
+    h1 NUESTROS CLIENTES
+    .questions
+      .question
+        li(style="list-style:none;")|Chill Garden, Caballito
 
+        li(style="list-style:none;")|Club Vélez Sarfield 
 
-  
+        li(style="list-style:none;")|Campo Trocha, Mercedes
+
+        li(style="list-style:none;")|Barrio Privado Campo Daromy, San Vicente 
+
+        li(style="list-style:none;")|Country Club Banco Provincia
+
+        li(style="list-style:none;")|Cabañas Tandil 
+
+        li(style="list-style:none;")|Barrio Privado Alto Verde, Cordoba 
+
+        li(style="list-style:none;")|Country Cañada Los Arces, Pilar
+
+        li(style="list-style:none;")|Bg Outfitters, Palermo
+
+        li(style="list-style:none;")|Condominio Privado Hurlingham 
+
+        li(style="list-style:none;")|Barrio Privado San Isidro Labrador, Benavidez 
+
+        li(style="list-style:none;")|Terralagos 
+
+        li(style="list-style:none;")|Tiempos de Canning 
+
+        li(style="list-style:none;")|Hudson Park
+
+        li(style="list-style:none;")|Altos del Sol 
+
+        li(style="list-style:none;")|Banco Nación Mendoza
+
 
 // footer
 footer

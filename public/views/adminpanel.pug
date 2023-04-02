@@ -46,6 +46,8 @@ head
               h4.client-number.c-info= `Numero de teléfono del cliente: "${client.telNumber}"`
             .client-name-container
               h4.client-adress.c-info= `Direccion del cliente: "${client.adress}"`
+            .client-name-container
+              h4.client-observ.c-info= `Observaciones: "${client.observ}"`
             .client-products-container
               h4.client-products.c-info Productos comprados:
               if JSON.parse(client.products).length == 1 
@@ -72,7 +74,7 @@ head
             
       
   .h1-orders
-      h1.orders-h1 Pedidos Entregados
+      h1.orders-h1 Pedidos Hechos
   .products-max-container
       each client in y
         if client.done == true
@@ -83,6 +85,8 @@ head
               h4.client-number.c-info= `Numero de teléfono del cliente: "${client.telNumber}"`
             .client-name-container
               h4.client-adress.c-info= `Direccion del cliente: "${client.adress}"`
+            .client-name-container
+              h4.client-observ.c-info= `Observaciones: "${client.observ}"`
             .client-products-container
               h4.client-products.c-info Productos comprados:
               if JSON.parse(client.products).length == 1 

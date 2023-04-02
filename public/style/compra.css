@@ -49,6 +49,7 @@ h3 {
 }
 .my-p {
   background-color: #fff;
+  width: 60%;
   display: flex;
   flex-direction: column;
   outline: 1.5px solid #222;
@@ -64,7 +65,7 @@ h3 {
   gap: 35px;
   padding: 10px 17.5px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .second-info {
   font-size: 15px;
@@ -83,6 +84,8 @@ h3 {
 .discount-p-text {
   color: #a22;
   display: inline;
+}
+.amount-span {
 }
 .size-span {
   display: flex;
@@ -187,9 +190,11 @@ img[src="imgs/wa.link_tuaxel.png"] {
   color: #eee;
   box-shadow: #888 0px 0px 10px;
 }
+
 .select-inp-size {
   margin-left: 7px;
 }
+
 @media screen and (min-width: 1000px) {
   h3 {
     font-size: 30px !important;

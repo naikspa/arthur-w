@@ -78,3 +78,24 @@ menuBtn.addEventListener("click", e=>{
   //   target.style.animation = "desaparecer 0.5s forwards"
   // }
   // }
+
+
+  document.addEventListener('click', (e) => {
+    if(e.target.classList.contains('hjj23')){changeExpand(e)}
+})
+         
+const changeExpand = e =>{
+    expand = e.target;
+    let expanded = expand.parentElement.querySelector('.question-more-clients');
+    console.log(expanded)
+    console.log(expand)
+    if(expand.textContent == "Ver más"){
+        expand.textContent = "Ver menos"
+        expanded.style.display = "inline-block";
+
+
+    }else if(expand.textContent == "Ver menos"){
+        expand.textContent = "Ver más"
+        expanded.style.display = "none";
+    }
+}
